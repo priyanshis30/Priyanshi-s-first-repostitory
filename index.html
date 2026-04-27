@@ -53,7 +53,6 @@
       background: linear-gradient(to bottom, #fdf2f8, #ffe4ec);
     }
 
-    /* subtitle style */
     section p:nth-of-type(2) {
       font-size: 16px;
       color: #6b7280;
@@ -101,6 +100,17 @@
       color: #ec4899;
       text-decoration: none;
     }
+
+    .links a {
+      margin: 10px;
+      text-decoration: none;
+      color: #ec4899;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -120,7 +130,15 @@
   <h1>Hi, I'm Priyanshi</h1>
   <p>Mechanical & Automation Engineering Student</p>
   <p>Building in Robotics, CAD Design & Data Science</p>
-  <button onclick="window.open('Priyanshi_CV.pdf', '_blank')">View My CV</button>
+
+  <!-- CV BUTTON -->
+  <button onclick="window.open('Priyanshi%20CV.pdf', '_blank')">View My CV</button>
+
+  <!-- SOCIAL LINKS -->
+  <div class="links">
+    <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
+    <a href="https://github.com/priyanshi30" target="_blank">GitHub</a>
+  </div>
 </section>
 
 <section id="about">
@@ -147,8 +165,13 @@
   <h2>Projects</h2>
 
   <div class="card">
-    <h3>Coming Soon</h3>
-    <p>Currently building uponon some exciting ideas for project and research </p>
+    <h3>Smart Automation Project</h3>
+    <p>Working on automation systems using sensors and control logic.</p>
+  </div>
+
+  <div class="card">
+    <h3>CAD Models</h3>
+    <p>Designing mechanical components and assemblies using CAD tools.</p>
   </div>
 
 </section>
@@ -156,6 +179,10 @@
 <section id="contact">
   <h2>Contact</h2>
   <p>Email: <a class="email" href="mailto:priyanshisehrawat30@gmail.com">priyanshisehrawat30@gmail.com</a></p>
+
+  <div class="links">
+    <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
+  </div>
 </section>
 
 </body>
