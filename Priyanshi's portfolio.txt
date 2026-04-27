@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Priyanshi | Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fdf2f8;
+      color: #1e293b;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+    }
+
+    nav h2 {
+      color: #ec4899;
+    }
+
+    nav a {
+      color: #1e293b;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    nav a:hover {
+      color: #ec4899;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #ec4899;
+    }
+
+    h2 {
+      color: #be185d;
+    }
+
+    section:first-of-type {
+      background: linear-gradient(to bottom, #fdf2f8, #ffe4ec);
+    }
+
+    /* subtitle style */
+    section p:nth-of-type(2) {
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px;
+      border-radius: 14px;
+      display: inline-block;
+      width: 220px;
+      box-shadow: 0 10px 25px rgba(236,72,153,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .skills span {
+      background: #fbcfe8;
+      padding: 10px 15px;
+      margin: 5px;
+      display: inline-block;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #ec4899;
+      border: none;
+      padding: 12px 25px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #db2777;
+    }
+
+    a.email {
+      color: #ec4899;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Priyanshi</h2>
+  <div>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section>
+  <h1>Hi, I'm Priyanshi</h1>
+  <p>Mechanical & Automation Engineering Student</p>
+  <p>Building in Robotics, CAD Design & Data Science</p>
+  <button onclick="window.open('Priyanshi_CV.pdf', '_blank')">View My CV</button>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I'm passionate about design, CAD, robotics, and data analysis.  
+    I enjoy building creative engineering solutions and exploring new technologies.
+  </p>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>Python</span>
+    <span>R</span>
+    <span>CAD</span>
+    <span>Robotics</span>
+    <span>HTML</span>
+    <span>Data Science</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Coming Soon</h3>
+    <p>Currently building uponon some exciting ideas for project and research </p>
+  </div>
+
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a class="email" href="mailto:priyanshisehrawat30@gmail.com">priyanshisehrawat30@gmail.com</a></p>
+</section>
+
+</body>
+</html>
