@@ -1,184 +1,543 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Priyanshi | Portfolio</title>
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fdf2f8;
-      color: #1e293b;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink-50: #fdf2f8;
+      --pink-100: #fce7f3;
+      --pink-200: #fbcfe8;
+      --pink-300: #f9a8d4;
+      --pink-400: #f472b6;
+      --pink-500: #ec4899;
+      --pink-600: #db2777;
+      --pink-700: #be185d;
+      --pink-800: #9d174d;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
     }
 
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; background: var(--pink-50); color: var(--slate-800); }
+
+    /* ── NAV ── */
     nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 50px;
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--pink-200);
     }
-
-    nav h2 {
-      color: #ec4899;
+    .nav-logo { font-size: 22px; font-weight: 700; color: var(--pink-500); letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      text-decoration: none; color: var(--slate-700); font-size: 14px; font-weight: 500;
+      transition: color 0.2s; position: relative;
     }
-
-    nav a {
-      color: #1e293b;
-      text-decoration: none;
-      margin-left: 20px;
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--pink-500); transition: width 0.2s;
     }
+    .nav-links a:hover { color: var(--pink-500); }
+    .nav-links a:hover::after { width: 100%; }
 
-    nav a:hover {
-      color: #ec4899;
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 40px;
+      background: linear-gradient(160deg, #fdf2f8 0%, #fce7f3 50%, #fff1f2 100%);
+      position: relative; overflow: hidden;
     }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
+    .hero-blob {
+      position: absolute; border-radius: 50%; opacity: 0.35; pointer-events: none;
     }
-
-    h1 {
-      font-size: 42px;
-      color: #ec4899;
+    .blob1 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, #fbcfe8, transparent);
+      top: -130px; right: -110px;
     }
-
-    h2 {
-      color: #be185d;
+    .blob2 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, #fce7f3, transparent);
+      bottom: -90px; left: -70px;
     }
-
-    section:first-of-type {
-      background: linear-gradient(to bottom, #fdf2f8, #ffe4ec);
+    .hero-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink-400), var(--pink-700));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; font-weight: 700; color: white;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 32px rgba(236,72,153,0.3);
+      letter-spacing: -1px;
     }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px;
-      border-radius: 14px;
+    .hero-tag {
       display: inline-block;
-      width: 220px;
-      box-shadow: 0 10px 25px rgba(236,72,153,0.1);
-      transition: transform 0.3s;
+      background: var(--pink-100); color: var(--pink-700);
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
+      border: 1px solid var(--pink-200);
     }
-
-    .card:hover {
-      transform: translateY(-8px);
+    .hero h1 {
+      font-size: 54px; font-weight: 800; color: var(--slate-800);
+      line-height: 1.1; margin-bottom: 10px;
     }
-
-    .skills span {
-      background: #fbcfe8;
-      padding: 10px 15px;
-      margin: 5px;
+    .hero h1 span { color: var(--pink-500); }
+    .hero-sub { font-size: 18px; color: var(--slate-700); margin-bottom: 8px; }
+    .hero-desc { font-size: 15px; color: #64748b; margin-bottom: 36px; max-width: 440px; line-height: 1.65; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+    .btn-primary {
+      background: var(--pink-500); color: white;
+      padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 14px rgba(236,72,153,0.35);
       display: inline-block;
-      border-radius: 20px;
-      font-size: 14px;
+    }
+    .btn-primary:hover { background: var(--pink-600); transform: translateY(-2px); }
+    .btn-outline {
+      background: white; color: var(--pink-600);
+      padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600;
+      text-decoration: none; border: 1.5px solid var(--pink-300);
+      cursor: pointer; transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--pink-50); transform: translateY(-2px); }
+    .hero-socials { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .social-pill {
+      display: flex; align-items: center; gap: 7px;
+      background: white; border: 1px solid var(--pink-200);
+      border-radius: 20px; padding: 8px 16px;
+      font-size: 13px; font-weight: 500; color: var(--slate-700);
+      text-decoration: none; transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(236,72,153,0.08);
+    }
+    .social-pill:hover { border-color: var(--pink-400); color: var(--pink-600); transform: translateY(-2px); }
+
+    /* ── SHARED SECTION ── */
+    section { padding: 80px 40px; }
+    .section-label {
+      display: inline-block;
+      background: var(--pink-100); color: var(--pink-700);
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .section-title { font-size: 34px; font-weight: 800; color: var(--slate-800); margin-bottom: 12px; line-height: 1.2; }
+    .section-sub { font-size: 16px; color: #64748b; max-width: 500px; line-height: 1.6; }
+
+    /* ── ABOUT ── */
+    #about { background: white; }
+    .about-inner {
+      max-width: 920px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .about-text p { font-size: 15px; color: var(--slate-600); line-height: 1.8; margin-bottom: 16px; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .stat-card {
+      background: var(--pink-50); border: 1px solid var(--pink-100);
+      border-radius: 12px; padding: 18px 20px; text-align: center;
+    }
+    .stat-num { font-size: 26px; font-weight: 800; color: var(--pink-500); }
+    .stat-label { font-size: 12px; color: #64748b; margin-top: 2px; }
+    .about-visual {
+      background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+      border-radius: 20px; height: 320px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; border: 1px solid var(--pink-200);
+    }
+    .about-visual-icon { font-size: 56px; }
+    .about-visual-label { font-size: 16px; font-weight: 600; color: var(--pink-700); }
+    .about-visual-sub { font-size: 13px; color: var(--pink-500); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--pink-50); text-align: center; }
+    .skills-grid {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+      margin-top: 36px; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    .skill-chip {
+      background: white; border: 1.5px solid var(--pink-200);
+      border-radius: 12px; padding: 12px 22px;
+      font-size: 14px; font-weight: 600; color: var(--pink-700);
+      transition: all 0.2s; cursor: default;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .skill-chip:hover {
+      border-color: var(--pink-500); background: var(--pink-50);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(236,72,153,0.15);
+    }
+    .skill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink-400); flex-shrink: 0; }
+
+    /* ── PROJECTS ── */
+    #projects { background: white; }
+    .section-header { text-align: center; margin-bottom: 40px; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; max-width: 960px; margin: 0 auto;
+    }
+    .project-card {
+      background: white; border: 1px solid var(--pink-100);
+      border-radius: 16px; padding: 28px; transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--pink-400), var(--pink-600));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(236,72,153,0.12); }
+    .project-card:hover::before { opacity: 1; }
+    .proj-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--pink-100); display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .proj-title { font-size: 17px; font-weight: 700; color: var(--slate-800); margin-bottom: 8px; }
+    .proj-desc { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 16px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      background: var(--pink-50); color: var(--pink-700);
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+      border: 1px solid var(--pink-100);
     }
 
-    button {
-      background: #ec4899;
+    /* ── CAD VIDEOS ── */
+    #videos { background: var(--pink-50); }
+    .videos-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; max-width: 960px; margin: 40px auto 0;
+    }
+    .video-card {
+      background: white; border: 1px solid var(--pink-100);
+      border-radius: 16px; overflow: hidden;
+      transition: all 0.25s;
+    }
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(236,72,153,0.12); }
+    .video-thumb {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      background: var(--pink-100); overflow: hidden;
+    }
+    .video-thumb iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       border: none;
-      padding: 12px 25px;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
+    }
+    /* Placeholder shown when no real video yet */
+    .video-placeholder {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+    }
+    .video-placeholder-icon { font-size: 38px; }
+    .video-placeholder-text { font-size: 13px; font-weight: 600; color: var(--pink-700); }
+    .video-info { padding: 18px 20px; }
+    .video-title { font-size: 15px; font-weight: 700; color: var(--slate-800); margin-bottom: 6px; }
+    .video-desc { font-size: 13px; color: #64748b; line-height: 1.55; }
+    .video-badge {
+      display: inline-block; margin-top: 10px;
+      background: var(--pink-50); color: var(--pink-700);
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px;
+      border: 1px solid var(--pink-100);
     }
 
-    button:hover {
-      background: #db2777;
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(135deg, var(--pink-700) 0%, var(--pink-500) 100%);
+      text-align: center; padding: 80px 40px;
     }
-
-    a.email {
-      color: #ec4899;
-      text-decoration: none;
+    #contact .section-label { background: rgba(255,255,255,0.2); color: white; }
+    #contact .section-title { color: white; }
+    #contact .section-sub { color: rgba(255,255,255,0.8); margin: 0 auto 40px; }
+    .contact-cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 40px; }
+    .contact-card {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px; padding: 18px 28px;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: white;
+      font-size: 14px; font-weight: 500; transition: all 0.2s;
+      backdrop-filter: blur(8px);
     }
-
-    .links a {
-      margin: 10px;
-      text-decoration: none;
-      color: #ec4899;
-      font-weight: bold;
+    .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+    .cc-icon { font-size: 22px; }
+    .cc-label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .cc-val { font-size: 14px; font-weight: 600; }
+    .contact-cta {
+      background: white; color: var(--pink-600);
+      padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 700;
+      text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
+    .contact-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
 
-    .links a:hover {
-      text-decoration: underline;
+    /* ── FOOTER ── */
+    footer {
+      background: var(--slate-800); color: #94a3b8;
+      text-align: center; padding: 24px;
+      font-size: 13px;
+    }
+    footer span { color: var(--pink-400); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .hero h1 { font-size: 36px; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      section { padding: 60px 20px; }
+      .videos-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 30px; }
     }
   </style>
 </head>
-
 <body>
 
+<!-- ── NAV ── -->
 <nav>
-  <h2>Priyanshi</h2>
-  <div>
-    <a href="#">Home</a>
+  <div class="nav-logo">Priyanshi</div>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
     <a href="#about">About</a>
+    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#videos">CAD Videos</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<section>
-  <h1>Hi, I'm Priyanshi</h1>
-  <p>Mechanical & Automation Engineering Student</p>
-  <p>Building in Robotics, CAD Design & Data Science</p>
-
-  <!-- CV BUTTON -->
-  <button onclick="window.open('Priyanshi_CV.pdf', '_blank')">View My CV</button>
-
-  <!-- SOCIAL LINKS -->
-  <div class="links">
-    <a href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">🔗 LinkedIn</a>
-    <a href="https://github.com/priyanshis30" target="_blank">💻 GitHub</a>
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-avatar">PS</div>
+  <div class="hero-tag">Open to opportunities</div>
+  <h1>Hi, I'm <span>Priyanshi</span></h1>
+  <p class="hero-sub">Mechanical &amp; Automation Engineering Student</p>
+  <p class="hero-desc">Building in Robotics, CAD Design &amp; Data Science — turning engineering problems into elegant solutions.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="Priyanshi_CV.pdf" target="_blank">View my CV</a>
+    <a class="btn-outline" href="#contact">Get in touch</a>
+  </div>
+  <div class="hero-socials">
+    <a class="social-pill" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">
+      🔗 LinkedIn
+    </a>
+    <a class="social-pill" href="https://github.com/priyanshis30" target="_blank">
+      💻 GitHub
+    </a>
   </div>
 </section>
 
+<!-- ── ABOUT ── -->
 <section id="about">
-  <h2>About Me</h2>
-  <p>
-    I'm passionate about design, CAD, robotics, and data analysis.  
-    I enjoy building creative engineering solutions and exploring new technologies.
-  </p>
-</section>
-
-<section>
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>Python</span>
-    <span>R</span>
-    <span>CAD</span>
-    <span>Robotics</span>
-    <span>HTML</span>
-    <span>Data Science</span>
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-label">About me</div>
+      <h2 class="section-title">Engineering with creativity &amp; purpose</h2>
+      <p>I'm a passionate Mechanical &amp; Automation Engineering student with a deep love for design, CAD modeling, robotics, and data analysis.</p>
+      <p>I enjoy building creative engineering solutions and exploring new technologies — from crafting precise 3D models in Creo to writing data pipelines in Python.</p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Projects built</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Technical skills</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">CAD</div>
+          <div class="stat-label">Creo &amp; 3D design</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">Data &amp; robotics</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-icon">⚙️</div>
+      <div class="about-visual-label">Mechanical &amp; Automation</div>
+      <div class="about-visual-sub">Engineering Student</div>
+    </div>
   </div>
 </section>
 
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-label">What I know</div>
+  <h2 class="section-title">Skills &amp; technologies</h2>
+  <p class="section-sub" style="margin: 0 auto 8px;">A mix of software, engineering, and data tools I use to bring ideas to life.</p>
+  <div class="skills-grid">
+    <div class="skill-chip"><span class="skill-dot"></span>Python</div>
+    <div class="skill-chip"><span class="skill-dot"></span>R</div>
+    <div class="skill-chip"><span class="skill-dot"></span>CAD / Creo</div>
+    <div class="skill-chip"><span class="skill-dot"></span>Robotics</div>
+    <div class="skill-chip"><span class="skill-dot"></span>HTML &amp; CSS</div>
+    <div class="skill-chip"><span class="skill-dot"></span>Data Science</div>
+    <div class="skill-chip"><span class="skill-dot"></span>Automation Systems</div>
+    <div class="skill-chip"><span class="skill-dot"></span>Sensor Control Logic</div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
 <section id="projects">
-  <h2>Projects</h2>
-
-  <div class="card">
-    <h3>Smart Automation Project</h3>
-    <p>Working on automation systems using sensors and control logic.</p>
+  <div class="section-header">
+    <div class="section-label">What I've built</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub" style="margin: 0 auto;">Engineering work, designs, and explorations I've worked on.</p>
   </div>
-
-  <div class="card">
-    <h3>CAD Models</h3>
-    <p>Designing graphics and views using creo.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="proj-icon">🤖</div>
+      <div class="proj-title">Smart Automation Project</div>
+      <div class="proj-desc">Working on automation systems using sensors and control logic to create intelligent, responsive mechanical systems.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Sensors</span>
+        <span class="proj-tag">Control Logic</span>
+        <span class="proj-tag">Automation</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="proj-icon">🏗️</div>
+      <div class="proj-title">CAD Models</div>
+      <div class="proj-desc">Designing detailed engineering graphics and technical views using Creo Parametric for mechanical components and assemblies.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Creo</span>
+        <span class="proj-tag">3D Modeling</span>
+        <span class="proj-tag">CAD</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="proj-icon">📊</div>
+      <div class="proj-title">Data Analysis Work</div>
+      <div class="proj-desc">Applying Python and R to analyze engineering datasets, visualize trends, and derive insights for better decision-making.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">R</span>
+        <span class="proj-tag">Data Science</span>
+      </div>
+    </div>
   </div>
-
 </section>
 
+<!-- ── CAD VIDEOS ── -->
+<section id="videos">
+  <div class="section-header">
+    <div class="section-label">On YouTube</div>
+    <h2 class="section-title">CAD tutorials &amp; demos</h2>
+    <p class="section-sub" style="margin: 0 auto;">
+      Watch my CAD modeling process — from concept sketches to finished 3D assemblies in Creo.
+    </p>
+  </div>
+  <div class="videos-grid">
+
+    <!--
+      HOW TO ADD YOUR VIDEOS:
+      1. Go to your YouTube video
+      2. Click Share → Embed
+      3. Copy the video ID from the URL (the part after "v=" e.g. "dQw4w9WgXcQ")
+      4. Replace the src below:
+         src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+      5. Update the title and description below each card
+      6. Delete the .video-placeholder div and uncomment the iframe
+    -->
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <!-- Replace VIDEO_ID_1 with your actual YouTube video ID -->
+        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen title="CAD Video 1"></iframe> -->
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">▶️</div>
+          <div class="video-placeholder-text">Add your video ID here</div>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">CAD Model — Title Here</div>
+        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
+        <div class="video-badge">Creo Parametric</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen title="CAD Video 2"></iframe> -->
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">▶️</div>
+          <div class="video-placeholder-text">Add your video ID here</div>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">CAD Model — Title Here</div>
+        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
+        <div class="video-badge">3D Assembly</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen title="CAD Video 3"></iframe> -->
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">▶️</div>
+          <div class="video-placeholder-text">Add your video ID here</div>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-title">CAD Model — Title Here</div>
+        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
+        <div class="video-badge">CAD Design</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
 <section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a class="email" href="mailto:priyanshisehrawat30@gmail.com">priyanshisehrawat30@gmail.com</a></p>
-
-  <div class="links">
-    <a href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">LinkedIn:Priyanshi Sehrawat</a>
+  <div class="section-label">Say hello</div>
+  <h2 class="section-title">Let's connect</h2>
+  <p class="section-sub">
+    I'm always open to new opportunities, collaborations, or just a good conversation about engineering and tech.
+  </p>
+  <div class="contact-cards">
+    <a class="contact-card" href="mailto:priyanshisehrawat30@gmail.com">
+      <span class="cc-icon">✉️</span>
+      <div>
+        <div class="cc-label">Email</div>
+        <div class="cc-val">priyanshisehrawat30@gmail.com</div>
+      </div>
+    </a>
+    <a class="contact-card" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">
+      <span class="cc-icon">🔗</span>
+      <div>
+        <div class="cc-label">LinkedIn</div>
+        <div class="cc-val">Priyanshi Sehrawat</div>
+      </div>
+    </a>
+    <a class="contact-card" href="https://github.com/priyanshis30" target="_blank">
+      <span class="cc-icon">💻</span>
+      <div>
+        <div class="cc-label">GitHub</div>
+        <div class="cc-val">priyanshis30</div>
+      </div>
+    </a>
   </div>
+  <a class="contact-cta" href="mailto:priyanshisehrawat30@gmail.com">Send me a message →</a>
 </section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Crafted with <span>♥</span> by Priyanshi Sehrawat · 2025</p>
+</footer>
 
 </body>
 </html>
