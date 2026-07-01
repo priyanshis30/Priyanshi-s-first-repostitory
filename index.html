@@ -3,541 +3,692 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Priyanshi | Portfolio</title>
+  <title>Priyanshi Sehrawat · Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ 
     :root {
-      --pink-50: #fdf2f8;
-      --pink-100: #fce7f3;
-      --pink-200: #fbcfe8;
-      --pink-300: #f9a8d4;
-      --pink-400: #f472b6;
-      --pink-500: #ec4899;
-      --pink-600: #db2777;
-      --pink-700: #be185d;
-      --pink-800: #9d174d;
-      --slate-600: #475569;
-      --slate-700: #334155;
-      --slate-800: #1e293b;
+      --rose:    #f43f84;
+      --rose-lt: #fb7db8;
+      --rose-dk: #c2185b;
+      --blush:   #fff0f6;
+      --petal:   #fce7f3;
+      --petal2:  #fbd5e8;
+      --ink:     #1a0a14;
+      --muted:   #7a5c6e;
+      --card-bg: #ffffff;
+      --border:  #f3d6e7;
+ 
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
     }
-
+ 
     html { scroll-behavior: smooth; }
-    body { font-family: Arial, sans-serif; background: var(--pink-50); color: var(--slate-800); }
-
-    /* ── NAV ── */
+    body { font-family: var(--ff-body); background: var(--blush); color: var(--ink); line-height: 1.6; }
+ 
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--petal); }
+    ::-webkit-scrollbar-thumb { background: var(--rose-lt); border-radius: 99px; }
+ 
+    /* ─── NAV ─── */
     nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 48px;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 100;
-      border-bottom: 1px solid var(--pink-200);
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 64px;
+      background: rgba(255,240,246,0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-size: 22px; font-weight: 700; color: var(--pink-500); letter-spacing: -0.5px; }
-    .nav-links { display: flex; gap: 28px; }
+    .nav-logo {
+      font-family: var(--ff-display); font-size: 20px; color: var(--rose-dk);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 32px; }
     .nav-links a {
-      text-decoration: none; color: var(--slate-700); font-size: 14px; font-weight: 500;
-      transition: color 0.2s; position: relative;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -2px; left: 0;
-      width: 0; height: 2px; background: var(--pink-500); transition: width 0.2s;
-    }
-    .nav-links a:hover { color: var(--pink-500); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ── HERO ── */
+    .nav-links a:hover { color: var(--rose); }
+ 
+    /* ─── HERO ─── */
     .hero {
-      min-height: 88vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 80px 40px;
-      background: linear-gradient(160deg, #fdf2f8 0%, #fce7f3 50%, #fff1f2 100%);
+      min-height: calc(100vh - 64px);
+      display: grid; place-items: center;
+      padding: 80px 56px;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(244,63,132,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(251,125,184,0.10) 0%, transparent 70%),
+        var(--blush);
+      text-align: center;
       position: relative; overflow: hidden;
     }
-    .hero-blob {
-      position: absolute; border-radius: 50%; opacity: 0.35; pointer-events: none;
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(244,63,132,0.12);
+      pointer-events: none;
     }
-    .blob1 {
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, #fbcfe8, transparent);
-      top: -130px; right: -110px;
+    .ring1 { width: 520px; height: 520px; top: -120px; right: -120px; }
+    .ring2 { width: 340px; height: 340px; bottom: -60px; left: -60px; }
+    .ring3 { width: 200px; height: 200px; top: 40%; left: 8%; }
+ 
+    .hero-inner { position: relative; z-index: 1; max-width: 700px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 16px;
+      font-size: 12px; font-weight: 500; color: var(--rose-dk);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(244,63,132,0.08);
     }
-    .blob2 {
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, #fce7f3, transparent);
-      bottom: -90px; left: -70px;
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--rose); animation: pulse 2s infinite;
     }
-    .hero-avatar {
-      width: 100px; height: 100px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--pink-400), var(--pink-700));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 36px; font-weight: 700; color: white;
-      margin-bottom: 28px;
-      box-shadow: 0 8px 32px rgba(236,72,153,0.3);
-      letter-spacing: -1px;
+    @keyframes pulse {
+      0%,100% { opacity:1; transform: scale(1); }
+      50% { opacity:0.5; transform: scale(1.4); }
     }
-    .hero-tag {
-      display: inline-block;
-      background: var(--pink-100); color: var(--pink-700);
-      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
-      border: 1px solid var(--pink-200);
-    }
+ 
     .hero h1 {
-      font-size: 54px; font-weight: 800; color: var(--slate-800);
-      line-height: 1.1; margin-bottom: 10px;
+      font-family: var(--ff-display);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 800; line-height: 1.05;
+      color: var(--ink); margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
-    .hero h1 span { color: var(--pink-500); }
-    .hero-sub { font-size: 18px; color: var(--slate-700); margin-bottom: 8px; }
-    .hero-desc { font-size: 15px; color: #64748b; margin-bottom: 36px; max-width: 440px; line-height: 1.65; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
-    .btn-primary {
-      background: var(--pink-500); color: white;
-      padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 14px rgba(236,72,153,0.35);
+    .hero h1 em {
+      font-style: normal; color: var(--rose);
+      background: linear-gradient(135deg, var(--rose), var(--rose-dk));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-role {
+      font-size: 17px; color: var(--muted); font-weight: 300;
+      letter-spacing: 0.01em; margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-role strong { font-weight: 500; color: var(--ink); }
+ 
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 12px;
+      font-family: var(--ff-body); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: all 0.22s; cursor: pointer; border: none;
+    }
+    .btn-rose {
+      background: var(--rose); color: white;
+      box-shadow: 0 4px 20px rgba(244,63,132,0.32);
+    }
+    .btn-rose:hover { background: var(--rose-dk); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,63,132,0.38); }
+    .btn-ghost {
+      background: white; color: var(--rose-dk);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .btn-ghost:hover { border-color: var(--rose-lt); transform: translateY(-2px); }
+ 
+    .hero-socials { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 9px 18px;
+      font-size: 13px; color: var(--muted); text-decoration: none;
+      transition: all 0.2s; font-weight: 400;
+    }
+    .social-link:hover { color: var(--rose); border-color: var(--rose-lt); transform: translateY(-1px); }
+ 
+    /* ─── SECTION SHARED ─── */
+    .section { padding: 96px 56px; }
+    .section-tag {
       display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 14px;
     }
-    .btn-primary:hover { background: var(--pink-600); transform: translateY(-2px); }
-    .btn-outline {
-      background: white; color: var(--pink-600);
-      padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600;
-      text-decoration: none; border: 1.5px solid var(--pink-300);
-      cursor: pointer; transition: all 0.2s; display: inline-block;
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: var(--ink); line-height: 1.15;
+      margin-bottom: 14px; letter-spacing: -0.01em;
     }
-    .btn-outline:hover { background: var(--pink-50); transform: translateY(-2px); }
-    .hero-socials { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .social-pill {
-      display: flex; align-items: center; gap: 7px;
-      background: white; border: 1px solid var(--pink-200);
-      border-radius: 20px; padding: 8px 16px;
-      font-size: 13px; font-weight: 500; color: var(--slate-700);
-      text-decoration: none; transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(236,72,153,0.08);
-    }
-    .social-pill:hover { border-color: var(--pink-400); color: var(--pink-600); transform: translateY(-2px); }
-
-    /* ── SHARED SECTION ── */
-    section { padding: 80px 40px; }
-    .section-label {
-      display: inline-block;
-      background: var(--pink-100); color: var(--pink-700);
-      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
-    }
-    .section-title { font-size: 34px; font-weight: 800; color: var(--slate-800); margin-bottom: 12px; line-height: 1.2; }
-    .section-sub { font-size: 16px; color: #64748b; max-width: 500px; line-height: 1.6; }
-
-    /* ── ABOUT ── */
+    .section-lead { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.75; font-weight: 300; }
+ 
+    /* ─── ABOUT ─── */
     #about { background: white; }
-    .about-inner {
-      max-width: 920px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    .about-grid {
+      max-width: 1020px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
     }
-    .about-text p { font-size: 15px; color: var(--slate-600); line-height: 1.8; margin-bottom: 16px; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
-    .stat-card {
-      background: var(--pink-50); border: 1px solid var(--pink-100);
-      border-radius: 12px; padding: 18px 20px; text-align: center;
+    .about-body p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 18px; font-weight: 300; }
+    .about-body p strong { color: var(--ink); font-weight: 500; }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px;
     }
-    .stat-num { font-size: 26px; font-weight: 800; color: var(--pink-500); }
-    .stat-label { font-size: 12px; color: #64748b; margin-top: 2px; }
-    .about-visual {
-      background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
-      border-radius: 20px; height: 320px;
+    .stat {
+      background: var(--blush); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px; text-align: center;
+      transition: transform 0.2s;
+    }
+    .stat:hover { transform: translateY(-3px); }
+    .stat-n { font-family: var(--ff-display); font-size: 28px; color: var(--rose); font-weight: 700; }
+    .stat-l { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .about-illustration {
+      border-radius: 24px; overflow: hidden;
+      background: linear-gradient(145deg, var(--petal), var(--petal2));
+      border: 1px solid var(--border);
+      height: 340px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 14px; border: 1px solid var(--pink-200);
+      gap: 10px; position: relative;
     }
-    .about-visual-icon { font-size: 56px; }
-    .about-visual-label { font-size: 16px; font-weight: 600; color: var(--pink-700); }
-    .about-visual-sub { font-size: 13px; color: var(--pink-500); }
-
-    /* ── SKILLS ── */
-    #skills { background: var(--pink-50); text-align: center; }
-    .skills-grid {
-      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-      margin-top: 36px; max-width: 700px; margin-left: auto; margin-right: auto;
+    .about-illustration::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 30px,
+        rgba(244,63,132,0.03) 30px, rgba(244,63,132,0.03) 31px
+      );
     }
-    .skill-chip {
-      background: white; border: 1.5px solid var(--pink-200);
-      border-radius: 12px; padding: 12px 22px;
-      font-size: 14px; font-weight: 600; color: var(--pink-700);
-      transition: all 0.2s; cursor: default;
-      display: flex; align-items: center; gap: 8px;
+    .illus-emoji { font-size: 64px; position: relative; z-index: 1; }
+    .illus-label { font-family: var(--ff-display); font-size: 17px; color: var(--rose-dk); position: relative; z-index: 1; }
+    .illus-sub { font-size: 13px; color: var(--muted); position: relative; z-index: 1; }
+ 
+    /* ─── SKILLS ─── */
+    #skills { background: var(--blush); }
+    .skills-inner { max-width: 800px; }
+    .chips-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 11px 20px;
+      font-size: 14px; font-weight: 400; color: var(--ink);
+      transition: all 0.22s; cursor: default;
     }
-    .skill-chip:hover {
-      border-color: var(--pink-500); background: var(--pink-50);
+    .chip:hover {
+      border-color: var(--rose); color: var(--rose-dk);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(236,72,153,0.15);
+      box-shadow: 0 8px 24px rgba(244,63,132,0.12);
     }
-    .skill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink-400); flex-shrink: 0; }
-
-    /* ── PROJECTS ── */
-    #projects { background: white; }
-    .section-header { text-align: center; margin-bottom: 40px; }
-    .projects-grid {
+    .chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose-lt); flex-shrink: 0; }
+ 
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { background: white; }
+    .certs-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px; max-width: 960px; margin: 0 auto;
+      gap: 16px; margin-top: 40px; max-width: 1020px; margin-left: auto; margin-right: auto;
     }
-    .project-card {
-      background: white; border: 1px solid var(--pink-100);
-      border-radius: 16px; padding: 28px; transition: all 0.25s;
-      position: relative; overflow: hidden;
+    .cert-card {
+      background: var(--blush); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: all 0.22s;
     }
-    .project-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--pink-400), var(--pink-600));
-      opacity: 0; transition: opacity 0.2s;
+    .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(244,63,132,0.10); border-color: var(--rose-lt); }
+    .cert-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: white; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
     }
-    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(236,72,153,0.12); }
-    .project-card:hover::before { opacity: 1; }
-    .proj-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: var(--pink-100); display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin-bottom: 18px;
+    .cert-body { min-width: 0; }
+    .cert-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; line-height: 1.4; }
+    .cert-issuer { font-size: 12px; color: var(--muted); font-weight: 300; margin-bottom: 8px; }
+    .cert-badge {
+      display: inline-block;
+      background: white; color: var(--rose-dk);
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: 6px; border: 1px solid var(--border);
     }
-    .proj-title { font-size: 17px; font-weight: 700; color: var(--slate-800); margin-bottom: 8px; }
-    .proj-desc { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 16px; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .proj-tag {
-      background: var(--pink-50); color: var(--pink-700);
-      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
-      border: 1px solid var(--pink-100);
+    #projects { background: white; }
+    .projects-inner { max-width: 1020px; margin: 0 auto; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 18px; margin-top: 44px;
     }
-
-    /* ── CAD VIDEOS ── */
-    #videos { background: var(--pink-50); }
-    .videos-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; max-width: 960px; margin: 40px auto 0;
+    @media (max-width: 680px) {
+      .projects-grid { grid-template-columns: 1fr; }
     }
-    .video-card {
-      background: white; border: 1px solid var(--pink-100);
-      border-radius: 16px; overflow: hidden;
-      transition: all 0.25s;
+ 
+    /* base project card */
+    .proj-card {
+      background: var(--blush); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px;
+      transition: all 0.25s; position: relative; overflow: hidden;
     }
-    .video-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(236,72,153,0.12); }
-    .video-thumb {
-      position: relative; width: 100%; padding-bottom: 56.25%;
-      background: var(--pink-100); overflow: hidden;
+    .proj-card::after {
+      content: ''; position: absolute;
+      left: 0; bottom: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--rose-lt), var(--rose));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
     }
-    .video-thumb iframe {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      border: none;
+    .proj-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(244,63,132,0.10); }
+    .proj-card:hover::after { transform: scaleX(1); }
+    .proj-card-icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: white; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    /* Placeholder shown when no real video yet */
-    .video-placeholder {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; background: linear-gradient(135deg, var(--pink-100), var(--pink-200));
+    .proj-card-title { font-family: var(--ff-display); font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .proj-card-desc { font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 300; margin-bottom: 18px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      background: white; color: var(--rose-dk);
+      font-size: 11px; font-weight: 500; padding: 4px 10px;
+      border-radius: 6px; border: 1px solid var(--border);
     }
-    .video-placeholder-icon { font-size: 38px; }
-    .video-placeholder-text { font-size: 13px; font-weight: 600; color: var(--pink-700); }
-    .video-info { padding: 18px 20px; }
-    .video-title { font-size: 15px; font-weight: 700; color: var(--slate-800); margin-bottom: 6px; }
-    .video-desc { font-size: 13px; color: #64748b; line-height: 1.55; }
-    .video-badge {
-      display: inline-block; margin-top: 10px;
-      background: var(--pink-50); color: var(--pink-700);
-      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px;
-      border: 1px solid var(--pink-100);
+ 
+    /* ── CAD expandable card ── */
+    .proj-card.cad-card { cursor: pointer; }
+    .cad-toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 18px;
     }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: linear-gradient(135deg, var(--pink-700) 0%, var(--pink-500) 100%);
-      text-align: center; padding: 80px 40px;
+    .cad-toggle-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--rose);
+      background: none; border: none; cursor: pointer; padding: 0;
+      font-family: var(--ff-body);
+      transition: gap 0.2s;
     }
-    #contact .section-label { background: rgba(255,255,255,0.2); color: white; }
-    #contact .section-title { color: white; }
-    #contact .section-sub { color: rgba(255,255,255,0.8); margin: 0 auto 40px; }
-    .contact-cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 40px; }
+    .cad-toggle-btn:hover { gap: 10px; }
+    .cad-arrow {
+      display: inline-block; transition: transform 0.3s;
+      font-style: normal; font-size: 14px;
+    }
+ 
+    .cad-videos-panel {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+      opacity: 0;
+    }
+    .cad-videos-panel.open {
+      max-height: 2000px; opacity: 1;
+    }
+    .videos-divider {
+      height: 1px; background: var(--border);
+      margin: 22px 0 20px;
+    }
+    .videos-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 14px; }
+    .video-list { display: flex; flex-direction: column; gap: 14px; }
+    .video-item {
+      background: white; border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .video-thumb-wrap {
+      position: relative; width: 100%; padding-bottom: 56.25%; background: var(--petal);
+    }
+    .video-thumb-wrap iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-meta { padding: 14px 16px; }
+    .video-meta-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+    .video-meta-desc { font-size: 12px; color: var(--muted); font-weight: 300; }
+ 
+    /* ─── CONTACT ─── */
+    #contact { background: var(--blush); }
+    .contact-inner { max-width: 640px; }
+    .contact-cards {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 40px;
+    }
     .contact-card {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 14px; padding: 18px 28px;
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: white;
-      font-size: 14px; font-weight: 500; transition: all 0.2s;
-      backdrop-filter: blur(8px);
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px;
+      display: flex; align-items: center; gap: 16px;
+      text-decoration: none; color: var(--ink);
+      transition: all 0.22s;
     }
-    .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-    .cc-icon { font-size: 22px; }
-    .cc-label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
-    .cc-val { font-size: 14px; font-weight: 600; }
-    .contact-cta {
-      background: white; color: var(--pink-600);
-      padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 700;
-      text-decoration: none; display: inline-block;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    .contact-card:hover {
+      border-color: var(--rose-lt);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(244,63,132,0.10);
     }
-    .contact-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-
-    /* ── FOOTER ── */
+    .cc-icon-wrap {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--petal); display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .cc-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .cc-val { font-size: 14px; font-weight: 500; color: var(--ink); word-break: break-all; }
+ 
+    /* full-width email card */
+    .contact-card.full { grid-column: 1 / -1; }
+ 
+    /* ─── FOOTER ─── */
     footer {
-      background: var(--slate-800); color: #94a3b8;
-      text-align: center; padding: 24px;
-      font-size: 13px;
+      background: var(--ink); color: rgba(255,255,255,0.4);
+      text-align: center; padding: 28px;
+      font-size: 13px; font-weight: 300;
     }
-    footer span { color: var(--pink-400); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
-      .hero h1 { font-size: 36px; }
-      .about-inner { grid-template-columns: 1fr; gap: 32px; }
-      section { padding: 60px 20px; }
-      .videos-grid { grid-template-columns: 1fr; }
+    footer span { color: var(--rose-lt); }
+ 
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; }
+      .section { padding: 72px 24px; }
+      .hero { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .contact-card.full { grid-column: auto; }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 560px) {
       .nav-links { display: none; }
-      .hero h1 { font-size: 30px; }
+      .hero h1 { font-size: 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-<!-- ── NAV ── -->
+ 
+<!-- ─── NAV ─── -->
 <nav>
   <div class="nav-logo">Priyanshi</div>
   <div class="nav-links">
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
     <a href="#projects">Projects</a>
-    <a href="#videos">CAD Videos</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
-
-<!-- ── HERO ── -->
+ 
+<!-- ─── HERO ─── -->
 <section class="hero" id="hero">
-  <div class="hero-blob blob1"></div>
-  <div class="hero-blob blob2"></div>
-  <div class="hero-avatar">PS</div>
-  <div class="hero-tag">Open to opportunities</div>
-  <h1>Hi, I'm <span>Priyanshi</span></h1>
-  <p class="hero-sub">Mechanical &amp; Automation Engineering Student</p>
-  <p class="hero-desc">Building in Robotics, CAD Design &amp; Data Science — turning engineering problems into elegant solutions.</p>
-  <div class="hero-btns">
-    <a class="btn-primary" href="Priyanshi_CV.pdf" target="_blank">View my CV</a>
-    <a class="btn-outline" href="#contact">Get in touch</a>
-  </div>
-  <div class="hero-socials">
-    <a class="social-pill" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">
-      🔗 LinkedIn
-    </a>
-    <a class="social-pill" href="https://github.com/priyanshis30" target="_blank">
-      💻 GitHub
-    </a>
-  </div>
-</section>
-
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="about-inner">
-    <div class="about-text">
-      <div class="section-label">About me</div>
-      <h2 class="section-title">Engineering with creativity &amp; purpose</h2>
-      <p>I'm a passionate Mechanical &amp; Automation Engineering student with a deep love for design, CAD modeling, robotics, and data analysis.</p>
-      <p>I enjoy building creative engineering solutions and exploring new technologies — from crafting precise 3D models in Creo to writing data pipelines in Python.</p>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">2+</div>
-          <div class="stat-label">Projects built</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">6</div>
-          <div class="stat-label">Technical skills</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">CAD</div>
-          <div class="stat-label">Creo &amp; 3D design</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">AI</div>
-          <div class="stat-label">Data &amp; robotics</div>
-        </div>
-      </div>
-    </div>
-    <div class="about-visual">
-      <div class="about-visual-icon">⚙️</div>
-      <div class="about-visual-label">Mechanical &amp; Automation</div>
-      <div class="about-visual-sub">Engineering Student</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SKILLS ── -->
-<section id="skills">
-  <div class="section-label">What I know</div>
-  <h2 class="section-title">Skills &amp; technologies</h2>
-  <p class="section-sub" style="margin: 0 auto 8px;">A mix of software, engineering, and data tools I use to bring ideas to life.</p>
-  <div class="skills-grid">
-    <div class="skill-chip"><span class="skill-dot"></span>Python</div>
-    <div class="skill-chip"><span class="skill-dot"></span>R</div>
-    <div class="skill-chip"><span class="skill-dot"></span>CAD / Creo</div>
-    <div class="skill-chip"><span class="skill-dot"></span>Robotics</div>
-    <div class="skill-chip"><span class="skill-dot"></span>HTML &amp; CSS</div>
-    <div class="skill-chip"><span class="skill-dot"></span>Data Science</div>
-    <div class="skill-chip"><span class="skill-dot"></span>Automation Systems</div>
-    <div class="skill-chip"><span class="skill-dot"></span>Sensor Control Logic</div>
-  </div>
-</section>
-
-<!-- ── PROJECTS ── -->
-<section id="projects">
-  <div class="section-header">
-    <div class="section-label">What I've built</div>
-    <h2 class="section-title">Projects</h2>
-    <p class="section-sub" style="margin: 0 auto;">Engineering work, designs, and explorations I've worked on.</p>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="proj-icon">🤖</div>
-      <div class="proj-title">Smart Automation Project</div>
-      <div class="proj-desc">Working on automation systems using sensors and control logic to create intelligent, responsive mechanical systems.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Sensors</span>
-        <span class="proj-tag">Control Logic</span>
-        <span class="proj-tag">Automation</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="proj-icon">🏗️</div>
-      <div class="proj-title">CAD Models</div>
-      <div class="proj-desc">Designing detailed engineering graphics and technical views using Creo Parametric for mechanical components and assemblies.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Creo</span>
-        <span class="proj-tag">3D Modeling</span>
-        <span class="proj-tag">CAD</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="proj-icon">📊</div>
-      <div class="proj-title">Data Analysis Work</div>
-      <div class="proj-desc">Applying Python and R to analyze engineering datasets, visualize trends, and derive insights for better decision-making.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">R</span>
-        <span class="proj-tag">Data Science</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CAD VIDEOS ── -->
-<section id="videos">
-  <div class="section-header">
-    <div class="section-label">On YouTube</div>
-    <h2 class="section-title">CAD tutorials &amp; demos</h2>
-    <p class="section-sub" style="margin: 0 auto;">
-      Watch my CAD modeling process — from concept sketches to finished 3D assemblies in Creo.
+  <div class="hero-ring ring1"></div>
+  <div class="hero-ring ring2"></div>
+  <div class="hero-ring ring3"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Open to opportunities</div>
+    <h1>Hi, I'm <em>Priyanshi</em></h1>
+    <p class="hero-role">
+      Where <strong>engineering meets intelligence</strong> —<br/>
+      ML · CAD · Robotics · EVs · Automation
     </p>
-  </div>
-  <div class="videos-grid">
-
-    <!--
-      HOW TO ADD YOUR VIDEOS:
-      1. Go to your YouTube video
-      2. Click Share → Embed
-      3. Copy the video ID from the URL (the part after "v=" e.g. "dQw4w9WgXcQ")
-      4. Replace the src below:
-         src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-      5. Update the title and description below each card
-      6. Delete the .video-placeholder div and uncomment the iframe
-    -->
-
-    <div class="video-card">
-      <div class="video-thumb">
-        <!-- Replace VIDEO_ID_1 with your actual YouTube video ID -->
-        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen title="CAD Video 1"></iframe> -->
-        <div class="video-placeholder">
-          <div class="video-placeholder-icon">▶️</div>
-          <div class="video-placeholder-text">Add your video ID here</div>
-        </div>
-      </div>
-      <div class="video-info">
-        <div class="video-title">CAD Model — Title Here</div>
-        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
-        <div class="video-badge">Creo Parametric</div>
-      </div>
+    <div class="hero-actions">
+      <a class="btn btn-rose" href="Priyanshi_CV.pdf" target="_blank" rel="noopener" type="application/pdf">
+        <span>⊙</span> View my CV
+      </a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
     </div>
-
-    <div class="video-card">
-      <div class="video-thumb">
-        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen title="CAD Video 2"></iframe> -->
-        <div class="video-placeholder">
-          <div class="video-placeholder-icon">▶️</div>
-          <div class="video-placeholder-text">Add your video ID here</div>
-        </div>
-      </div>
-      <div class="video-info">
-        <div class="video-title">CAD Model — Title Here</div>
-        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
-        <div class="video-badge">3D Assembly</div>
-      </div>
+    <div class="hero-socials">
+      <a class="social-link" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">🔗 LinkedIn</a>
+      <a class="social-link" href="https://github.com/priyanshis30" target="_blank">💻 GitHub</a>
+      <a class="social-link" href="https://youtube.com/@priyanshisehrawat30" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="#f43f84" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
     </div>
-
-    <div class="video-card">
-      <div class="video-thumb">
-        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen title="CAD Video 3"></iframe> -->
-        <div class="video-placeholder">
-          <div class="video-placeholder-icon">▶️</div>
-          <div class="video-placeholder-text">Add your video ID here</div>
-        </div>
-      </div>
-      <div class="video-info">
-        <div class="video-title">CAD Model — Title Here</div>
-        <div class="video-desc">Brief description of what this video covers — the part, technique, or process you demonstrate.</div>
-        <div class="video-badge">CAD Design</div>
-      </div>
-    </div>
-
   </div>
 </section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="section-label">Say hello</div>
-  <h2 class="section-title">Let's connect</h2>
-  <p class="section-sub">
-    I'm always open to new opportunities, collaborations, or just a good conversation about engineering and tech.
-  </p>
-  <div class="contact-cards">
-    <a class="contact-card" href="mailto:priyanshisehrawat30@gmail.com">
-      <span class="cc-icon">✉️</span>
-      <div>
-        <div class="cc-label">Email</div>
-        <div class="cc-val">priyanshisehrawat30@gmail.com</div>
+ 
+<!-- ─── ABOUT ─── -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-body">
+      <div class="section-tag">About me</div>
+      <h2 class="section-title">Engineering meets passion</h2>
+      <p>I'm a <strong>Mechanical &amp; Automation Engineering</strong> student passionate about building solutions where engineering, AI, and intelligent automation come together.</p>
+      <p>I enjoy exploring everything from <strong>machine learning and CAD design</strong> to soft robotics, industrial automation, and electric vehicle systems — always looking for ways to solve real-world challenges through technology.</p>
+      <p>Beyond academics, I love participating in <strong>hackathons</strong>, working on research-driven projects, and constantly expanding my skills. For me, every project is an opportunity to learn, innovate, and create something meaningful.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Projects</div></div>
+        <div class="stat"><div class="stat-n">8</div><div class="stat-l">Skills</div></div>
+        <div class="stat"><div class="stat-n">CAD</div><div class="stat-l">Creo expert</div></div>
+        <div class="stat"><div class="stat-n">🤖</div><div class="stat-l">Robotics</div></div>
       </div>
-    </a>
-    <a class="contact-card" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">
-      <span class="cc-icon">🔗</span>
-      <div>
-        <div class="cc-label">LinkedIn</div>
-        <div class="cc-val">Priyanshi Sehrawat</div>
-      </div>
-    </a>
-    <a class="contact-card" href="https://github.com/priyanshis30" target="_blank">
-      <span class="cc-icon">💻</span>
-      <div>
-        <div class="cc-label">GitHub</div>
-        <div class="cc-val">priyanshis30</div>
-      </div>
-    </a>
+    </div>
+    <div class="about-illustration">
+      <div class="illus-emoji">⚙️</div>
+      <div class="illus-label">Mechanical &amp; Automation</div>
+      <div class="illus-sub">Engineering Student</div>
+    </div>
   </div>
-  <a class="contact-cta" href="mailto:priyanshisehrawat30@gmail.com">Send me a message →</a>
 </section>
-
-<!-- ── FOOTER ── -->
+ 
+<!-- ─── SKILLS ─── -->
+<section class="section" id="skills">
+  <div class="skills-inner">
+    <div class="section-tag">What I know</div>
+    <h2 class="section-title">Skills &amp; tools</h2>
+    <p class="section-lead">Engineering software, programming languages, and domains I work in.</p>
+    <div class="chips-wrap">
+      <div class="chip"><span class="chip-dot"></span>Python</div>
+      <div class="chip"><span class="chip-dot"></span>R</div>
+      <div class="chip"><span class="chip-dot"></span>Machine Learning</div>
+      <div class="chip"><span class="chip-dot"></span>Data Science</div>
+      <div class="chip"><span class="chip-dot"></span>Tableau</div>
+      <div class="chip"><span class="chip-dot"></span>CATIA V5</div>
+      <div class="chip"><span class="chip-dot"></span>Creo Parametric</div>
+      <div class="chip"><span class="chip-dot"></span>CAD Modelling</div>
+      <div class="chip"><span class="chip-dot"></span>Soft Robotics</div>
+      <div class="chip"><span class="chip-dot"></span>Electric Vehicle Systems</div>
+      <div class="chip"><span class="chip-dot"></span>Industrial Automation</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ─── CERTIFICATIONS ─── -->
+<section class="section" id="certifications">
+  <div class="projects-inner">
+    <div class="section-tag">Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-lead">Courses and credentials I've earned along the way.</p>
+    <div class="certs-grid">
+ 
+      <!-- Add your real certifications below — duplicate a card for each one -->
+      <!-- Example cards — replace with yours -->
+ 
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-body">
+          <div class="cert-name">Certification Name</div>
+          <div class="cert-issuer">Issuing Organisation · Year</div>
+          <span class="cert-badge">Topic</span>
+        </div>
+      </div>
+ 
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-body">
+          <div class="cert-name">Certification Name</div>
+          <div class="cert-issuer">Issuing Organisation · Year</div>
+          <span class="cert-badge">Topic</span>
+        </div>
+      </div>
+ 
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-body">
+          <div class="cert-name">Certification Name</div>
+          <div class="cert-issuer">Issuing Organisation · Year</div>
+          <span class="cert-badge">Topic</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ─── PROJECTS ─── -->
+<section class="section" id="projects">
+  <div class="projects-inner">
+    <div class="section-tag">Work</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-lead">Engineering builds, ML models, CAD work, and web projects.</p>
+    <div class="projects-grid">
+ 
+      <!-- Card 1: Automation -->
+      <div class="proj-card">
+        <div class="proj-card-icon">🤖</div>
+        <div class="proj-card-title">Smart Automation Project</div>
+        <div class="proj-card-desc">Automation systems using sensors and control logic to create intelligent, responsive mechanical systems.</div>
+        <div class="tag-row">
+          <span class="tag">Sensors</span>
+          <span class="tag">Control Logic</span>
+          <span class="tag">Automation</span>
+        </div>
+      </div>
+ 
+      <!-- Card 2: CAD — expandable with videos -->
+      <div class="proj-card cad-card" id="cad-card" onclick="toggleCad()">
+        <div class="proj-card-icon">🏗️</div>
+        <div class="proj-card-title">CAD Models</div>
+        <div class="proj-card-desc">Designing detailed engineering components and assemblies using Creo Parametric — from concept sketches to fully constrained 3D models.</div>
+        <div class="tag-row">
+          <span class="tag">Creo</span>
+          <span class="tag">3D Modeling</span>
+          <span class="tag">Technical Drawing</span>
+        </div>
+        <div class="cad-toggle-row">
+          <button class="cad-toggle-btn" onclick="toggleCad(event)">
+            Watch videos <span class="cad-arrow" id="cad-arrow">→</span>
+          </button>
+        </div>
+ 
+        <!-- Videos panel — add your YouTube IDs below -->
+        <div class="cad-videos-panel" id="cad-panel">
+          <div class="videos-divider"></div>
+          <div class="videos-label">CAD tutorials &amp; demos</div>
+          <div class="video-list">
+ 
+            <!--
+              HOW TO ADD YOUR VIDEOS:
+              1. Get your YouTube video URL, e.g.: https://youtube.com/watch?v=ABC123xyz
+              2. The video ID is the part after v= → ABC123xyz
+              3. Replace VIDEO_ID below with that ID
+              4. Update the title and description
+            -->
+ 
+            <div class="video-item">
+              <div class="video-thumb-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/VIDEO_ID_1"
+                  title="CAD Video 1"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+                </iframe>
+              </div>
+              <div class="video-meta">
+                <div class="video-meta-title">CAD Model — Title Here</div>
+                <div class="video-meta-desc">Short description of what this demonstrates</div>
+              </div>
+            </div>
+ 
+            <div class="video-item">
+              <div class="video-thumb-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/VIDEO_ID_2"
+                  title="CAD Video 2"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+                </iframe>
+              </div>
+              <div class="video-meta">
+                <div class="video-meta-title">CAD Model — Title Here</div>
+                <div class="video-meta-desc">Short description of what this demonstrates</div>
+              </div>
+            </div>
+ 
+          </div>
+        </div>
+        <!-- end videos panel -->
+ 
+      </div>
+      <!-- end CAD card -->
+ 
+      <!-- Card 3: ML Models -->
+      <div class="proj-card">
+        <div class="proj-card-icon">🧠</div>
+        <div class="proj-card-title">ML Models</div>
+        <div class="proj-card-desc">Building and training machine learning models using Python — from data preprocessing and feature engineering to model evaluation and prediction.</div>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">ML</span>
+        </div>
+      </div>
+ 
+      <!-- Card 4: Web Projects -->
+      <div class="proj-card">
+        <div class="proj-card-icon">🌐</div>
+        <div class="proj-card-title">Built on the Web</div>
+        <div class="proj-card-desc">Designing and building websites from scratch — clean layouts, thoughtful interactions, and pages that actually look good. Including this one.</div>
+        <div class="tag-row">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Web Design</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ─── CONTACT ─── -->
+<section class="section" id="contact">
+  <div class="contact-inner">
+    <div class="section-tag">Say hello</div>
+    <h2 class="section-title">Let's connect</h2>
+    <p class="section-lead">Open to opportunities, collaborations, or a good conversation about engineering and tech.</p>
+    <div class="contact-cards">
+ 
+      <a class="contact-card full" href="mailto:priyanshisehrawat30@gmail.com">
+        <div class="cc-icon-wrap">✉️</div>
+        <div>
+          <div class="cc-label">Email</div>
+          <div class="cc-val">priyanshisehrawat30@gmail.com</div>
+        </div>
+      </a>
+ 
+      <a class="contact-card" href="https://www.linkedin.com/in/priyanshi-sehrawat-707427324/" target="_blank">
+        <div class="cc-icon-wrap">🔗</div>
+        <div>
+          <div class="cc-label">LinkedIn</div>
+          <div class="cc-val">Priyanshi Sehrawat</div>
+        </div>
+      </a>
+ 
+      <a class="contact-card" href="https://github.com/priyanshis30" target="_blank">
+        <div class="cc-icon-wrap">💻</div>
+        <div>
+          <div class="cc-label">GitHub</div>
+          <div class="cc-val">priyanshis30</div>
+        </div>
+      </a>
+ 
+      <a class="contact-card" href="https://youtube.com/@priyanshisehrawat30" target="_blank">
+        <div class="cc-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#f43f84" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <div>
+          <div class="cc-label">YouTube</div>
+          <div class="cc-val">@priyanshisehrawat30</div>
+        </div>
+      </a>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ─── FOOTER ─── -->
 <footer>
-  <p>Crafted with <span>♥</span> by Priyanshi Sehrawat · 2025</p>
+  <p>Crafted with <span>♥</span> by Priyanshi &nbsp;·&nbsp; June 2026</p>
 </footer>
-
+ 
+<script>
+  function toggleCad(e) {
+    if (e) e.stopPropagation();
+    const panel = document.getElementById('cad-panel');
+    const arrow = document.getElementById('cad-arrow');
+    const isOpen = panel.classList.toggle('open');
+    arrow.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+    arrow.textContent = isOpen ? '↓' : '→';
+  }
+</script>
+ 
 </body>
 </html>
