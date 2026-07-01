@@ -196,8 +196,8 @@
     .illus-sub { font-size: 13px; color: var(--muted); position: relative; z-index: 1; }
  
     /* ─── SKILLS ─── */
-    #skills { background: var(--blush); }
-    .skills-inner { max-width: 800px; }
+    #skills { background: var(--blush); text-align: center; }
+    .skills-inner { max-width: 800px; margin: 0 auto; }
     .chips-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
     .chip {
       display: inline-flex; align-items: center; gap: 8px;
@@ -213,8 +213,9 @@
     }
     .chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose-lt); flex-shrink: 0; }
  
-    /* ─── CERTIFICATIONS ─── */
-    #certifications { background: white; }
+    .proj-card { text-align: left; }
+    .cert-card { text-align: left; }
+    #certifications { background: white; text-align: center; }
     .certs-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px; margin-top: 40px; max-width: 1020px; margin-left: auto; margin-right: auto;
@@ -240,7 +241,7 @@
       font-size: 11px; font-weight: 500; padding: 3px 10px;
       border-radius: 6px; border: 1px solid var(--border);
     }
-    #projects { background: white; }
+    #projects { background: white; text-align: center; }
     .projects-inner { max-width: 1020px; margin: 0 auto; }
     .projects-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -329,8 +330,8 @@
     .video-meta-desc { font-size: 12px; color: var(--muted); font-weight: 300; }
  
     /* ─── CONTACT ─── */
-    #contact { background: var(--blush); }
-    .contact-inner { max-width: 640px; }
+    #contact { background: var(--blush); text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; text-align: left; }
     .contact-cards {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 14px; margin-top: 40px;
